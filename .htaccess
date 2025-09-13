@@ -1,0 +1,21 @@
+# Forzar UTF-8
+AddDefaultCharset utf-8
+
+# GZIP
+<ifModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript
+</ifModule>
+
+# Cache estática
+<ifModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/png "access plus 30 days"
+  ExpiresByType image/jpeg "access plus 30 days"
+  ExpiresByType text/css "access plus 7 days"
+  ExpiresByType application/javascript "access plus 7 days"
+</ifModule>
+
+# Seguridad básica
+Header set X-Content-Type-Options "nosniff"
+Header set X-Frame-Options "SAMEORIGIN"
+Header set X-XSS-Protection "1; mode=block"
